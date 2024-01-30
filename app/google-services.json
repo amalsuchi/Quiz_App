@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "796388335143",
+    "project_id": "fir-crud-a7ffa",
+    "storage_bucket": "fir-crud-a7ffa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:796388335143:android:b5b059a8016b5e7dce7802",
+        "android_client_info": {
+          "package_name": "com.example.firebasecrud"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdH-EZXwCVCEbPTOKp897u1jgJ9_id4Sk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:796388335143:android:a0bfb159177c215dce7802",
+        "android_client_info": {
+          "package_name": "com.example.quizapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdH-EZXwCVCEbPTOKp897u1jgJ9_id4Sk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
