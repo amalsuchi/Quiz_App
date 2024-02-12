@@ -25,10 +25,13 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.quizapp.ViewModel.QuizViewModel
+import com.example.quizapp.ui.theme.backgroundBlue
 import dagger.hilt.android.lifecycle.HiltViewModel
 
 @Composable
 fun listScreen(navController: NavController,viewModel: QuizViewModel){
+    
+    var answerindication:Boolean = false
 
     LaunchedEffect(Unit){
         val limit = viewModel.limit.value
@@ -42,14 +45,18 @@ fun listScreen(navController: NavController,viewModel: QuizViewModel){
     val state = viewModel.state.value
 
     if(state.loading){
-        Column(modifier = Modifier.fillMaxSize(),
+        Column(modifier = Modifier
+            .fillMaxSize()
+            .background(backgroundBlue),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center){
             CircularProgressIndicator()
         }
     }else if(!state.List.isEmpty()){
         
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier
+            .fillMaxSize()
+            .background(backgroundBlue)) {
             val currentQuestion = state.List[state.currentIndex]
             Row(modifier = Modifier
                 .padding(10.dp)
@@ -69,17 +76,21 @@ fun listScreen(navController: NavController,viewModel: QuizViewModel){
             options.forEachIndexed { index, answers ->
                 Button(onClick = {
                     if (answers == answer) {
+                        answerindication = true
                         viewModel.selectCorrectAnswer()
                         viewModel.incrementCurrentIndex()
                         viewModel.Totalanswerdques.value += 1
 
 
                     } else {
-
+                        answerindication = false
                     }
                 }, modifier = Modifier.padding(8.dp)) {
                     Text(text = answers,modifier = Modifier.padding(16.dp))
                 }
+            }
+            if(answerindication == false){
+                Text(text = "ANSWER IS WRONG")
             }
 
             if (viewModel.Totalanswerdques.value >= state.List.size) {

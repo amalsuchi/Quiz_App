@@ -25,6 +25,8 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.quizapp.ViewModel.QuizViewModel
+import com.example.quizapp.ui.theme.backgroundBlue
+import com.example.quizapp.ui.theme.darkBlue
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -35,14 +37,14 @@ fun limitScreen(navController: NavController,viewModel:QuizViewModel){
     Column(modifier = Modifier.fillMaxSize(),verticalArrangement = Arrangement.Center) {
         val numbers = (1..20).toList()
         Text(text = "Choose the Number of Questions", fontSize = 24.sp, fontWeight = FontWeight.ExtraBold, modifier = Modifier.padding(8.dp))
-        LazyColumn(modifier = Modifier.fillMaxSize()){
+        LazyColumn(modifier = Modifier.fillMaxSize().background(backgroundBlue)){
             items(numbers){
                     num ->
                 Row(modifier= Modifier
                     .fillMaxWidth()
                     .padding(8.dp)
                     .clip(RoundedCornerShape(10.dp))
-                    .background(Color.LightGray)
+                    .background(darkBlue)
                     .clickable {
                         viewModel.Selectlimit(num)
                         CoroutineScope(Dispatchers.Main).launch {
@@ -50,7 +52,7 @@ fun limitScreen(navController: NavController,viewModel:QuizViewModel){
                             navController.navigate("diff")
                         }
                     }){
-                    Text(text = "$num",modifier = Modifier.padding(16.dp), fontSize = 16.sp)
+                    Text(text = "$num",modifier = Modifier.padding(16.dp), fontSize = 16.sp, color = Color.White)
                 }
             }
         }
