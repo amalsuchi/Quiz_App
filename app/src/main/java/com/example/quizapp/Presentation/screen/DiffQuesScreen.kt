@@ -25,13 +25,15 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.quizapp.ViewModel.QuizViewModel
+import com.example.quizapp.ui.theme.backgroundBlue
+import com.example.quizapp.ui.theme.darkBlue
 
 
 @Composable
 fun DiffQuesScreen( navController: NavController,viewModel: QuizViewModel){
     
     val difficulty = listOf("easy", "medium", "hard")
-    Column(modifier = Modifier.fillMaxSize(),verticalArrangement = Arrangement.Center) {
+    Column(modifier = Modifier.fillMaxSize().background(backgroundBlue),verticalArrangement = Arrangement.Center) {
         Text(text = "Choose the Difficulty", fontSize = 24.sp, fontWeight = FontWeight.ExtraBold, modifier = Modifier.padding(8.dp))
 
         LazyColumn(modifier = Modifier.fillMaxSize()){
@@ -40,10 +42,10 @@ fun DiffQuesScreen( navController: NavController,viewModel: QuizViewModel){
                 Row(modifier= Modifier
                     .fillMaxWidth()
                     .padding(8.dp)
-                    .background(Color.LightGray)
+                    .background(darkBlue)
                     .clickable { viewModel.SelectDiff(diff) ;navController.navigate("list")}, horizontalArrangement = Arrangement.Center){
 
-                    Text(text = diff, fontSize = 16.sp, modifier = Modifier.padding(16.dp) )
+                    Text(text = diff, fontSize = 16.sp, modifier = Modifier.padding(16.dp), color = Color.White )
                 }
             }
         }

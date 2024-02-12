@@ -26,6 +26,8 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.quizapp.ViewModel.QuizViewModel
+import com.example.quizapp.ui.theme.backgroundBlue
+import com.example.quizapp.ui.theme.darkBlue
 
 @Composable
 fun CatagoryScreen(navController: NavController,viewModel: QuizViewModel){
@@ -42,7 +44,7 @@ fun CatagoryScreen(navController: NavController,viewModel: QuizViewModel){
         "Food And Drink" to "food_and_drink",
         "General Knowledge" to "general_knowledge")
 
-    Column(modifier = Modifier.fillMaxSize(),verticalArrangement = Arrangement.Center) {
+    Column(modifier = Modifier.fillMaxSize().background(backgroundBlue),verticalArrangement = Arrangement.Center) {
         Text(text = "Choose the Catagory", fontSize = 24.sp, fontWeight = FontWeight.ExtraBold, modifier = Modifier.padding(8.dp))
 
         LazyColumn(modifier = Modifier.fillMaxSize()){
@@ -51,11 +53,11 @@ fun CatagoryScreen(navController: NavController,viewModel: QuizViewModel){
                 Row(modifier= Modifier
                     .fillMaxWidth()
                     .padding(8.dp)
-                    .background(Color.LightGray)
+                    .background(darkBlue)
                     .clickable { viewModel.SelectCatagory(category.second);navController.navigate("limit") },
                     horizontalArrangement = Arrangement.Center){
 
-                    Text(text = category.first, fontSize = 16.sp, modifier = Modifier.padding(16.dp))
+                    Text(text = category.first, fontSize = 16.sp, modifier = Modifier.padding(16.dp), color = Color.White)
                 }
             }
         }
